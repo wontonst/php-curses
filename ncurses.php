@@ -1,17 +1,19 @@
 <?php
 use Entities\Frame;
 use Entities\Group;
-use Entities\Drawable;
+use Entities\MovingDrawable;
 
 include('start.php');
 
 
 $s = new Frame();
 
-$d = new Drawable(3,3,'r');
+$d = new MovingDrawable(10,40,'s',MovingDrawable::SE,1);
 $s->add($d);
+for($i = 0; $i != 15; $i++){
 $s->step();
-usleep(1000000);
+usleep(100000);
+}
 $s->close();
 
 ?>

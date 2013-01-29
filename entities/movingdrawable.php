@@ -24,13 +24,12 @@ class MovingDrawable extends Drawable {
     */
     private $draw;
     public function __construct($x,$y,$char,$path,$velocity) {
-        parent::construct($x,$y,$char);
+        parent::__construct($x,$y,$char);
         if(!is_array($path))$path = array($path);
-        $this->path = $path;
-        $this->velocity = $velocity;
+        $this->data['path'] = $path;
+        $this->data['velocity'] = $velocity;
         $this->draw = 0;
     }
-
     /**
     prepares the object for drawing by performing movement operations and removing drawable graphics
     */
@@ -41,36 +40,39 @@ class MovingDrawable extends Drawable {
         $this->draw = $this->draw+1 % $this->data['velocity'];
     }
     public function move() {
-        switch($this->data['path']) {
-MovingDrawable::NW:
+$path = $this->data['path'][0];
+if(count($this->data['path']) > 1)array_pop($this->data['path']);
+        switch($path) {
+case MovingDrawable::NW:
             $this->data['x']--;
             $this->data['y']--;
             break;
-MovingDrawable::N:
-
+case MovingDrawable::N:
+            $this->data['y']--;
             break;
-MovingDrawable::NE:
-
+case MovingDrawable::NE:
+            $this->data['x']++;
+            $this->data['y']--;
             break;
-MovingDrawable::E:
-
+case MovingDrawable::E:
+            $this->data['x']++;
             break;
-MovingDrawable::SE:
-
+case MovingDrawable::SE:
+            $this->data['x']++;
+            $this->data['y']++;
             break;
-MovingDrawable::S:
-
+case MovingDrawable::S:
+            $this->data['y']++;
             break;
-MovingDrawable::SW:
-
+case MovingDrawable::SW:
+            $this->data['x']--;
+            $this->data['y']++;
             break;
-MovingDrawable::W:
-
+case MovingDrawable::W:
+            $this->data['x']--;
             break;
-
         }
     }
-
 
 }
 

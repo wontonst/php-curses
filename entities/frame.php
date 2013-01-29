@@ -9,8 +9,10 @@ class Frame {
     public function __construct() {
         ncurses_init();
         ncurses_getmaxyx(STDSCR,$this->dim['y'],$this->dim['x']);
+$GLOBALS['x'] = $this->dim['x'];
+$GLOBALS['y'] = $this->dim['y'];
         $screen = ncurses_newwin(0,0,0,0);
-        ncurses_refresh();
+$this->repaint();
     }
 
     public function step() {
