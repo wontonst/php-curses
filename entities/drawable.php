@@ -1,4 +1,4 @@
-<?php 
+<?php namespace Entities;
 /**
 Anything that can be drawn onto the terminal screen.
 */
@@ -17,9 +17,12 @@ $this->data['y']=$y;
 $this->data['c']=$char;
 }
 
-public function draw()
+public function prepare()
 {
 ncurses_mvdelch($this->data['y'],$this->data['x']);
+}
+public function draw()
+{
 ncurses_addch($this->data['c']);
 }
 

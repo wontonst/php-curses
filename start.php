@@ -1,10 +1,10 @@
 <?php
 
-function __autoloader($classname)
-{
-require_once($classname);
-}
+use Entities\Drawable;
 
-$d = new Drawable(3,3,'r');
+function __autoload($classname)
+{
+require_once(str_replace('\\','/',strtolower($classname)).'.php');
+}
 
 ?>
