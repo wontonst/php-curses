@@ -16,14 +16,13 @@ class Drawable {
         $this->data['y']=$y;
         $this->data['c']=$char;
     }
-public function update()
-{
-$this->prepare();
-$this->draw();
-}
-/**
-prepares the object for drawing by removing its displayed graphics
-*/
+    public function update() {
+        $this->prepare();
+        $this->draw();
+    }
+    /**
+    prepares the object for drawing by removing its displayed graphics
+    */
     public function prepare() {
         ncurses_mvdelch($this->data['y'],$this->data['x']);
     }
