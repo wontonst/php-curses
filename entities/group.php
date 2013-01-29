@@ -5,14 +5,13 @@ namespace Entities;
 /**
 Groups of Drawable objects
 */
-class Group {
+class Group extends StateObject{
 
     public $drawables;///<all drawable objects
-    public $good;
-
+    
     public function __construct() {
+parent::__construct();
         $this->drawables= array();
-        $this->good = true;
     }
     public function add($i,$key = null) {
         if(!$key)
@@ -27,6 +26,7 @@ class Group {
             $this->drawables[$i]->draw();
             if(!$this->drawables[$i]->isGood()) {
                 unset($this->drawables[$i]);
+if(empty($this->drawables)){$this->good=StateObject::BAD;return;}
                 $this->drawables = array_values($this->drawables);
             }
         }

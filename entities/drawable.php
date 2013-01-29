@@ -2,7 +2,7 @@
 /**
 Anything that can be drawn onto the terminal screen.
 */
-class Drawable {
+class Drawable extends StateObject{
 
     const HIDE_WHILE_OFFSCREEN=0;
     const REMOVE_UPON_OFFSCREEN=1;
@@ -16,13 +16,12 @@ class Drawable {
     */
     protected $data;
     protected $offscreen;///<defines behavior of object upon leaving screen
-    protected $good;///<while this is true, the drawable will continue to exist
 
     public function __construct($x,$y,$char) {
+parent::__construct();
         $this->data['x']=$x;
         $this->data['y']=$y;
         $this->data['c']=$char;
-        $this->good = true;
         $this->offscreen = Drawable::HIDE_WHILE_OFFSCREEN;
     }
     public function setOffscreenOperation($b) {
@@ -43,7 +42,7 @@ class Drawable {
         if(($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y'] ) || $this->offscreen==Drawable::DRAW_WHILE_OFFSCREEN) {
             ncurses_move($this->data['y'], $this->data['x']);
             ncurses_addch(ord($this->data['c']));
-        } else if($this->offscreen=Drawable::REMOVE_UPON_OFFSCREEN)$this->good=false;
+        } else if($this->offscreen==Drawable::REMOVE_UPON_OFFSCREEN)$this->good=StateObject::BAD;
     }
 }
 

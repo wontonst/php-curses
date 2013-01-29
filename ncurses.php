@@ -2,6 +2,7 @@
 use Entities\Frame;
 use Entities\Group;
 use Entities\MovingDrawable;
+use Entities\Drawable;
 
 include('start.php');
 
@@ -16,7 +17,8 @@ $g->add($d);
 $g->add($d2);
 $d = new MovingDrawable(30,5,'w',MovingDrawable::N,33);
 $g->add($d);
-$d = new MovingDrawable(60,3,'X',$mvt,50);
+$d = new MovingDrawable(60,2,'X',$mvt,50);
+//$d->setOffscreenOperation(Drawable::REMOVE_UPON_OFFSCREEN);
 $g->add($d);
 $s->add($g);
 for($i = 0; $i != 350; $i++) {

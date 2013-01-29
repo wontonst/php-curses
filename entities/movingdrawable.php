@@ -74,9 +74,6 @@ class MovingDrawable extends Drawable {
             break;
         }
     }
-    public function isGood() {
-        return $this->good;
-    }
 }
 
 ?>
