@@ -24,11 +24,14 @@ class Drawable {
     prepares the object for drawing by removing its displayed graphics
     */
     public function prepare() {
-        ncurses_mvdelch($this->data['y'],$this->data['x']);
+        ncurses_move($this->data['y'],$this->data['x']);
+ncurses_addch(ord(' '));
     }
     public function draw() {
-        if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['y'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y'])
+        if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y']){
+ncurses_move($this->data['y'], $this->data['x']);
             ncurses_addch(ord($this->data['c']));
+}
     }
 
 }

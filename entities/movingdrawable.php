@@ -22,7 +22,7 @@ class MovingDrawable extends Drawable {
     /**
     Counter used to regulate velocity. When draw == velocity movement will be performed.
     */
-    private $draw;
+    private $draw;///<whether or not to move
     public function __construct($x,$y,$char,$path,$velocity) {
         parent::__construct($x,$y,$char);
         if(!is_array($path))$path = array($path);
@@ -34,10 +34,11 @@ class MovingDrawable extends Drawable {
     prepares the object for drawing by performing movement operations and removing drawable graphics
     */
     public function prepare() {
-        if($this->draw == $this->data['velocity'])
-            $this->move();
         parent::prepare();
-        $this->draw = $this->draw+1 % $this->data['velocity'];
+        if($this->draw == $this->data['velocity']){
+            $this->move();
+}
+        $this->draw = ($this->draw+1) % ($this->data['velocity']+1);
     }
     public function move() {
         $path = $this->data['path'][0];

@@ -8,8 +8,10 @@ include('start.php');
 
 $s = new Frame();
 
-$d = new MovingDrawable(10,40,'s',MovingDrawable::SE,1);
+$d = new MovingDrawable(40,10,'s',MovingDrawable::SE,1);
+$d2 = new MovingDrawable(50,10,'r',MovingDrawable::SE,1);
 $s->add($d);
+$s->add($d2);
 for($i = 0; $i != 15; $i++){
 $s->step();
 usleep(100000);

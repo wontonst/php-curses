@@ -6,6 +6,7 @@ class Frame {
 
     private $obj;///<collection of drawables
     private $dim;///<dimensions array, holds keys x and y
+
     public function __construct() {
         ncurses_init();
         ncurses_getmaxyx(STDSCR,$this->dim['y'],$this->dim['x']);
@@ -30,6 +31,5 @@ class Frame {
     public function close() {
         ncurses_end();
     }
-
 }
 ?>
