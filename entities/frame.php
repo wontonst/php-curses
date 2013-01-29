@@ -17,8 +17,11 @@ class Frame {
         for($i = 0; $i != count($this->obj); $i++) {
             $this->obj[$i]->update();
         }
-        ncurses_refresh();
     }
+public function repaint()
+{
+        ncurses_refresh();
+}
 public function add($o)
 {
 $this->obj[] = $o;
