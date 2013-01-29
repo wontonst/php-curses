@@ -5,16 +5,23 @@ use Entities\MovingDrawable;
 
 include('start.php');
 
+$mvt = array(MovingDrawable::N,MovingDrawable::N,MovingDrawable::N,MovingDrawable::S,MovingDrawable::S);
 
 $s = new Frame();
 
-$d = new MovingDrawable(40,10,'s',MovingDrawable::SE,1);
-$d2 = new MovingDrawable(50,10,'r',MovingDrawable::SE,1);
-$s->add($d);
-$s->add($d2);
-for($i = 0; $i != 15; $i++) {
+$g = new Group();
+$d = new MovingDrawable(40,10,'s',MovingDrawable::SE,12);
+$d2 = new MovingDrawable(50,9,'r',MovingDrawable::SE,20);
+$g->add($d);
+$g->add($d2);
+$d = new MovingDrawable(30,5,'w',MovingDrawable::N,33);
+$g->add($d);
+$d = new MovingDrawable(60,3,'X',$mvt,50);
+$g->add($d);
+$s->add($g);
+for($i = 0; $i != 350; $i++) {
     $s->step();
-    usleep(100000);
+    usleep(10000);
 }
 $s->close();
 

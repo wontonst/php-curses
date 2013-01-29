@@ -6,7 +6,7 @@ use Entities\Drawable;
 /**
 The moving drawable class adds the following to the data array.
 <li>path => direction of travel</li>
-<li>velocity => velocity of travel</li>
+<li>velocity => velocity of travel in ticks per movement</li>
 */
 class MovingDrawable extends Drawable {
 
@@ -41,8 +41,8 @@ class MovingDrawable extends Drawable {
         $this->draw = ($this->draw+1) % ($this->data['velocity']+1);
     }
     public function move() {
-        $path = $this->data['path'][0];
-        if(count($this->data['path']) > 1)array_pop($this->data['path']);
+        $path = array_shift($this->data['path']);
+        if(empty($this->data['path']))$this->data['path'][]=$path;
         switch($path) {
         case MovingDrawable::NW:
             $this->data['x']--;
@@ -74,7 +74,10 @@ class MovingDrawable extends Drawable {
             break;
         }
     }
-
+public function isGood()
+{
+return $this->good;
+}
 }
 
 ?>

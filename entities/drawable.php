@@ -3,6 +3,11 @@
 Anything that can be drawn onto the terminal screen.
 */
 class Drawable {
+
+const HIDE_WHILE_OFFSCREEN=0;
+const REMOVE_UPON_OFFSCREEN=1;
+const DRAW_WHILE_OFFSCREEN=2;
+
     /**
     Data stored inside this array are in format key => value
     <li>x => x coordinate</li>
@@ -10,12 +15,20 @@ class Drawable {
     <li>c => character to be drawn</li>
     */
     protected $data;
+protected $offscreen;///<defines behavior of object upon leaving screen
+protected $good;///<while this is true, the drawable will continue to exist
 
     public function __construct($x,$y,$char) {
         $this->data['x']=$x;
         $this->data['y']=$y;
         $this->data['c']=$char;
+$this->good = true;
+$this->offscreen = Drawable::HIDE_WHILE_OFFSCREEN;
     }
+public function setOffscreenOperation($b)
+{
+$this->offscreen = $b;
+}
     public function update() {
         $this->prepare();
         $this->draw();
@@ -28,12 +41,11 @@ class Drawable {
         ncurses_addch(ord(' '));
     }
     public function draw() {
-        if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y']) {
+        if(($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y'] ) || $this->offscreen==Drawable::DRAW_WHILE_OFFSCREEN) {
             ncurses_move($this->data['y'], $this->data['x']);
             ncurses_addch(ord($this->data['c']));
-        }
-    }
-
+}else if($this->offscreen=Drawable::REMOVE_UPON_OFFSCREEN)$this->good=false;
+}
 }
 
 ?>
