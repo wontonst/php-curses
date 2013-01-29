@@ -25,13 +25,13 @@ class Drawable {
     */
     public function prepare() {
         ncurses_move($this->data['y'],$this->data['x']);
-ncurses_addch(ord(' '));
+        ncurses_addch(ord(' '));
     }
     public function draw() {
-        if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y']){
-ncurses_move($this->data['y'], $this->data['x']);
+        if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y']) {
+            ncurses_move($this->data['y'], $this->data['x']);
             ncurses_addch(ord($this->data['c']));
-}
+        }
     }
 
 }

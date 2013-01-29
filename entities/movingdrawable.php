@@ -35,9 +35,9 @@ class MovingDrawable extends Drawable {
     */
     public function prepare() {
         parent::prepare();
-        if($this->draw == $this->data['velocity']){
+        if($this->draw == $this->data['velocity']) {
             $this->move();
-}
+        }
         $this->draw = ($this->draw+1) % ($this->data['velocity']+1);
     }
     public function move() {
