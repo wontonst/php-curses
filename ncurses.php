@@ -1,7 +1,10 @@
 <?php
+use Entities\Frame;
+
 define('DIR',__DIR__.'/');
 include('start.php');
 
+/*
 ncurses_init();
 ncurses_getmaxyx(STDSCR,$height,$width);
 $screen = ncurses_newwin(0,0,0,0);
@@ -23,10 +26,10 @@ ncurses_mvaddch(11,40,ord('3'));
 ncurses_refresh();
 usleep(1000000);
 ncurses_end();
+*/
 
+$s = new Frame();
+usleep(1000000);
+$s->close();
 
-$d = new Drawable(3,3,'r');
-
-//echo '//'.__DIR__.'//';
-echo $height.' '.$width;
 ?>
