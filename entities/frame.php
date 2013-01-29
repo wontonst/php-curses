@@ -17,6 +17,7 @@ class Frame {
         for($i = 0; $i != count($this->obj); $i++) {
             $this->obj[$i]->update();
         }
+$this->repaint();
     }
 public function repaint()
 {

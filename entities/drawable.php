@@ -9,7 +9,7 @@ class Drawable {
     <li>y => y coordinate</li>
     <li>c => character to be drawn</li>
     */
-    private $data;
+    protected $data;
 
     public function __construct($x,$y,$char) {
         $this->data['x']=$x;
@@ -21,6 +21,9 @@ public function update()
 $this->prepare();
 $this->draw();
 }
+/**
+prepares the object for drawing by removing its displayed graphics
+*/
     public function prepare() {
         ncurses_mvdelch($this->data['y'],$this->data['x']);
     }
