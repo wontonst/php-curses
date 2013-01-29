@@ -2,7 +2,7 @@
 namespace Entities;
 
 use Entities\Drawable;
-class MovingDrawable extends Drawable{
+class MovingDrawable extends Drawable {
 
 
 }
