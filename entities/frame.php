@@ -19,7 +19,10 @@ class Frame {
         }
         ncurses_refresh();
     }
-
+public function add($o)
+{
+$this->obj[] = $o;
+}
     public function close() {
         ncurses_end();
     }
