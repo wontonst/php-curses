@@ -19,9 +19,9 @@ class Frame {
     public function step() {
         for($i = 0; $i < count($this->obj); $i++) {
             $this->obj[$i]->update();
-if(!$this->obj[$i]->isGood())
+            if(!$this->obj[$i]->isGood())
                 unset($this->obj[$i]);
-                $this->obj = array_values($this->obj);
+            $this->obj = array_values($this->obj);
         }
         $this->repaint();
     }

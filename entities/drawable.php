@@ -2,7 +2,7 @@
 /**
 Anything that can be drawn onto the terminal screen.
 */
-class Drawable extends StateObject{
+class Drawable extends StateObject {
 
     const HIDE_WHILE_OFFSCREEN=0;
     const REMOVE_UPON_OFFSCREEN=1;
@@ -18,7 +18,7 @@ class Drawable extends StateObject{
     protected $offscreen;///<defines behavior of object upon leaving screen
 
     public function __construct($x,$y,$char) {
-parent::__construct();
+        parent::__construct();
         $this->data['x']=$x;
         $this->data['y']=$y;
         $this->data['c']=$char;
