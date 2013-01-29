@@ -43,29 +43,30 @@ class MovingDrawable extends Drawable {
     public function move() {
         switch($this->data['path']) {
 MovingDrawable::NW:
-$this->data['x']--;
-$this->data['y']--;
-break;
+            $this->data['x']--;
+            $this->data['y']--;
+            break;
 MovingDrawable::N:
 
-break;
+            break;
 MovingDrawable::NE:
 
-break;
+            break;
 MovingDrawable::E:
 
-break;
+            break;
 MovingDrawable::SE:
 
-break;
+            break;
 MovingDrawable::S:
 
-break;
+            break;
 MovingDrawable::SW:
 
-break;MovingDrawable::W:
+            break;
+MovingDrawable::W:
 
-break;
+            break;
 
         }
     }

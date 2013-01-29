@@ -27,8 +27,8 @@ class Drawable {
         ncurses_mvdelch($this->data['y'],$this->data['x']);
     }
     public function draw() {
-if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['y'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y'])
-        ncurses_addch(ord($this->data['c']));
+        if($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['y'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y'])
+            ncurses_addch(ord($this->data['c']));
     }
 
 }
