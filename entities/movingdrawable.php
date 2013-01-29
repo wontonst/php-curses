@@ -40,35 +40,35 @@ class MovingDrawable extends Drawable {
         $this->draw = $this->draw+1 % $this->data['velocity'];
     }
     public function move() {
-$path = $this->data['path'][0];
-if(count($this->data['path']) > 1)array_pop($this->data['path']);
+        $path = $this->data['path'][0];
+        if(count($this->data['path']) > 1)array_pop($this->data['path']);
         switch($path) {
-case MovingDrawable::NW:
+        case MovingDrawable::NW:
             $this->data['x']--;
             $this->data['y']--;
             break;
-case MovingDrawable::N:
+        case MovingDrawable::N:
             $this->data['y']--;
             break;
-case MovingDrawable::NE:
+        case MovingDrawable::NE:
             $this->data['x']++;
             $this->data['y']--;
             break;
-case MovingDrawable::E:
+        case MovingDrawable::E:
             $this->data['x']++;
             break;
-case MovingDrawable::SE:
+        case MovingDrawable::SE:
             $this->data['x']++;
             $this->data['y']++;
             break;
-case MovingDrawable::S:
+        case MovingDrawable::S:
             $this->data['y']++;
             break;
-case MovingDrawable::SW:
+        case MovingDrawable::SW:
             $this->data['x']--;
             $this->data['y']++;
             break;
-case MovingDrawable::W:
+        case MovingDrawable::W:
             $this->data['x']--;
             break;
         }
