@@ -17,7 +17,7 @@ $this->behavior=$i;
 
 public function spawnOne()
 {
-$char = switch($this->behavior)
+switch($this->behavior)
 {
 case RandomSpawner::NUMERIC:
 $char = mt_rand(0,9);//numeric
@@ -32,6 +32,8 @@ case RandomSpawner::LETTER:
 $char = chr(97+mt_rand(0,25));//lower
 $char = mt_rand(0,1) == 0 ? strtoupper($char):$char;
 break;
+default:
+$char=$this->data['char'];
 }
         $this->add(new MovingDrawable($this->data['x'], $this->data['y'], $char, $this->direction, $this->velocity));
 }
