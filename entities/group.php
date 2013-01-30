@@ -20,8 +20,15 @@ class Group extends StateObject {
         return $key;
     }
     public function update() {
+$this->prepare();
+$this->draw();
+    }
+public function prepare()
+{
         for($i = 0; $i != count($this->drawables); $i++) $this->drawables[$i]->prepare();
-
+}
+public function draw()
+{
         for($i = 0; $i < count($this->drawables); $i++) {
             $this->drawables[$i]->draw();
             if(!$this->drawables[$i]->isGood()) {
@@ -33,7 +40,7 @@ class Group extends StateObject {
                 $this->drawables = array_values($this->drawables);
             }
         }
-    }
+}
 }
 
 ?>
