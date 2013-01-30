@@ -16,20 +16,20 @@ class Spawner extends Group {
     x - x-coordinate
     y - y-coordinate
     char - spawn character
-spawnsremaining - remaining spawns to perform, -1 is infinite
+    spawnsremaining - remaining spawns to perform, -1 is infinite
     ticker - ticker
     */
     protected $data;
 
-/**
-@param $direction MovingDrawable enum direction
-@param $xcord spawn xcoordinate
-@param $ycord spawn ycoordinate
-@param $char character to spawn
-@param $velo spawned object velocity
-@param $rate spawn rate
-@param $tospawn number of objects to spawn
-*/
+    /**
+    @param $direction MovingDrawable enum direction
+    @param $xcord spawn xcoordinate
+    @param $ycord spawn ycoordinate
+    @param $char character to spawn
+    @param $velo spawned object velocity
+    @param $rate spawn rate
+    @param $tospawn number of objects to spawn
+    */
     public function __construct($direction, $xcord, $ycord, $char, $velo=1, $rate=1,$tospawn=-1) {
         parent::__construct();
         $this->direction=$direction;
@@ -39,7 +39,7 @@ spawnsremaining - remaining spawns to perform, -1 is infinite
         $this->data['x']=$xcord;
         $this->data['y']=$ycord;
         $this->data['char']=$char;
-$this->data['spawnsremaining']=$tospawn;
+        $this->data['spawnsremaining']=$tospawn;
     }
     public function update() {
         $this->prepare();
@@ -48,24 +48,21 @@ $this->data['spawnsremaining']=$tospawn;
         $this->data['ticker']=  ($this->data['ticker'] + 1) % ($this->spawnrate + 1);
         $this->draw();
     }
-public function setSpawnsRemaining($i)
-{
-$this->data['spawnsremaining']=$i;
-}
+    public function setSpawnsRemaining($i) {
+        $this->data['spawnsremaining']=$i;
+    }
     public function spawn() {
-if($this->data['spawnsremaining'] == 0)
-{
-$this->$good=StateObject::BAD;
-}else{
-$this->spawnOne();
-$this->data['spawnsremaining']--;
-}
+        if($this->data['spawnsremaining'] == 0) {
+            $this->$good=StateObject::BAD;
+        } else {
+            $this->spawnOne();
+            $this->data['spawnsremaining']--;
+        }
     }
 
-public function spawnOne()
-{
+    public function spawnOne() {
         $this->add(new MovingDrawable($this->data['x'], $this->data['y'], $this->data['char'], $this->direction, $this->velocity));
-}
+    }
 }
 
 
