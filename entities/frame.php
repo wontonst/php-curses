@@ -7,12 +7,14 @@ class Frame {
     private $obj;///<collection of drawables
     private $dim;///<dimensions array, holds keys x and y
 
-    public function __construct() {
+private $tickrate;///<time between ticks
+    public function __construct($t) {
         ncurses_init();
         ncurses_getmaxyx(STDSCR,$this->dim['y'],$this->dim['x']);
         $GLOBALS['x'] = $this->dim['x'];
         $GLOBALS['y'] = $this->dim['y'];
         $screen = ncurses_newwin(0,0,0,0);
+$this->tickrate=$t;
         $this->repaint();
     }
 
@@ -24,6 +26,7 @@ class Frame {
             $this->obj = array_values($this->obj);
         }
         $this->repaint();
+usleep($this->tickrate);
     }
     public function repaint() {
         ncurses_refresh();

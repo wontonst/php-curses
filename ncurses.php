@@ -8,7 +8,7 @@ include('start.php');
 
 $mvt = array(MovingDrawable::N,MovingDrawable::N,MovingDrawable::N,MovingDrawable::S,MovingDrawable::S);
 
-$s = new Frame();
+$s = new Frame(10000);
 
 $g = new Group();
 $d = new MovingDrawable(40,10,'s',MovingDrawable::SE,12);
@@ -23,7 +23,6 @@ $g->add($d);
 $s->add($g);
 for($i = 0; $i != 350; $i++) {
     $s->step();
-    usleep(10000);
 }
 $s->close();
 
