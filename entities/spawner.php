@@ -16,11 +16,21 @@ class Spawner extends Group {
     x - x-coordinate
     y - y-coordinate
     char - spawn character
+spawnsremaining - remaining spawns to perform, -1 is infinite
     ticker - ticker
     */
     protected $data;
 
-    public function __construct($direction, $xcord, $ycord, $char, $velo=1, $rate=1) {
+/**
+@param $direction MovingDrawable enum direction
+@param $xcord spawn xcoordinate
+@param $ycord spawn ycoordinate
+@param $char character to spawn
+@param $velo spawned object velocity
+@param $rate spawn rate
+@param $tospawn number of objects to spawn
+*/
+    public function __construct($direction, $xcord, $ycord, $char, $velo=1, $rate=1,$tospawn=-1) {
         parent::__construct();
         $this->direction=$direction;
         $this->velocity=$velo;
@@ -29,6 +39,7 @@ class Spawner extends Group {
         $this->data['x']=$xcord;
         $this->data['y']=$ycord;
         $this->data['char']=$char;
+$this->data['spawnsremaining']=$tospawn;
     }
     public function update() {
         $this->prepare();
@@ -38,8 +49,19 @@ class Spawner extends Group {
         $this->draw();
     }
     public function spawn() {
-        $this->add(new MovingDrawable($this->data['x'], $this->data['y'], $this->data['char'], $this->direction, $this->velocity));
+if($this->data['spawnsremaining'] == 0)
+{
+$this->$good=StateObject::BAD;
+}else{
+$this->spawnOne();
+$this->data['spawnsremaining']--;
+}
     }
+
+public function spawnOne()
+{
+        $this->add(new MovingDrawable($this->data['x'], $this->data['y'], $this->data['char'], $this->direction, $this->velocity));
+}
 }
 
 
