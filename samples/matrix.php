@@ -20,15 +20,21 @@ $this->frame = new Frame(100000);
 public function start()
 {
 for($i = 0; $i != $this->steps; $i++) {
-    $f->step();
+    $this->frame->step();
+if($i%10 == 0)
+$this->spawn();
 }
 $f->close();
 }
-
+public function spawn()
+{
+$s = new RandomSpawner(MovingDrawable::S,mt_rand(0,79),0,'a');
+$s->setRandomBehavior(RandomSpawner::NUMERIC);
+$s->setSpawnsRemaining(30);
+$this->frame->add($s);
+}
 }
 
-$s = new RandomSpawner(MovingDrawable::S,9,0,'a');
-$s->setRandomBehavior(RandomSpawner::NUMERIC);
-$f->add($s);
-
+$s = new Matrix(100);
+$s->start();
 ?>

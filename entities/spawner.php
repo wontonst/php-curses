@@ -48,6 +48,10 @@ $this->data['spawnsremaining']=$tospawn;
         $this->data['ticker']=  ($this->data['ticker'] + 1) % ($this->spawnrate + 1);
         $this->draw();
     }
+public function setSpawnsRemaining($i)
+{
+$this->data['spawnsremaining']=$i;
+}
     public function spawn() {
 if($this->data['spawnsremaining'] == 0)
 {
