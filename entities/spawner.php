@@ -52,13 +52,12 @@ class Spawner extends Group {
         $this->data['spawnsremaining']=$i;
     }
     public function spawn() {
-        if($this->data['spawnsremaining'] != 0)
-{
+        if($this->data['spawnsremaining'] != 0) {
             $this->spawnOne();
             $this->data['spawnsremaining']--;
-}else if (empty($this->drawables)) {
+        } else if (empty($this->drawables)) {
             $this->$good=StateObject::BAD;
-        } 
+        }
     }
 
     public function spawnOne() {

@@ -9,8 +9,8 @@ use Entities\RandomSpawner;
 
 class Matrix {
 
-const LOWEST_RATE=7;///<lowest rate of spawn
-const LENGTH=33;///<length of number lines
+    const LOWEST_RATE=7;///<lowest rate of spawn
+    const LENGTH=33;///<length of number lines
 
     private $steps;
     private $frame;
@@ -20,13 +20,13 @@ const LENGTH=33;///<length of number lines
         $this->frame = new Frame(70000);
     }
     public function start() {
-$nextspawn = 0;
+        $nextspawn = 0;
         for($i = 0; $i != $this->steps; $i++) {
             $this->frame->step();
-            if($i > $nextspawn){
+            if($i > $nextspawn) {
                 $this->spawn();
-$nextspawn = mt_rand($i,$i+Matrix::LOWEST_RATE);
-}
+                $nextspawn = mt_rand($i,$i+Matrix::LOWEST_RATE);
+            }
         }
         $this->frame->close();
     }
