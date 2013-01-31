@@ -22,6 +22,10 @@ parent::__construct();
    public function isGood() {
         return $this->good==StateObject::GOOD;
     }
+public function update()
+{
+throw new Exception('Cannot call Object::update() directly. Must inherit.');
+}
 }
 
 
