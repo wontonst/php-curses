@@ -5,7 +5,7 @@ namespace Entities;
 /**
 Groups of Drawable objects
 */
-class Group extends StateObject {
+class Group extends Object {
 
     public $drawables;///<all drawable objects
 

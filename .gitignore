@@ -15,3 +15,6 @@ nbproject/
 build.xml
 manifest.mf
 /build/
+
+log
+logger.php
