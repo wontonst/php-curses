@@ -10,13 +10,15 @@ use Entities\MovingDrawable;
 use Entities\RandomSpawner;
 
 class Matrix {
+
+const TICK_RATE=25000;
+const VELOCITY_LOW=1;
+const VELOCITY_HIGH=2;
+
+
 const HIGHEST_RATE=5;
-
-const TICK_RATE=45000;
-const VELOCITY=3;
-
-    const LOWEST_RATE=17;///<lowest rate of spawn
-    const LENGTH=33;///<length of number lines
+    const LOWEST_RATE=10;///<lowest rate of spawn
+    const LENGTH=32;///<length of number lines
 
     private $steps;
     private $frame;
@@ -38,7 +40,8 @@ $GLOBALS['log']->log($this->frame->getSize());
         $this->frame->close();
     }
     public function spawn() {
-        $s = new RandomSpawner(MovingDrawable::S,mt_rand(0,79),0,'a',Matrix::VELOCITY,Matrix::VELOCITY);
+$v=mt_rand(Matrix::VELOCITY_LOW,Matrix::VELOCITY_HIGH);
+        $s = new RandomSpawner(MovingDrawable::S, mt_rand(0,79), 0, 'a',$v,$v);
         $s->setRandomBehavior(RandomSpawner::NUMERIC);
         $s->setSpawnsRemaining(Matrix::LENGTH);
 $s->setOffscreenOperation(Drawable::REMOVE_UPON_OFFSCREEN);

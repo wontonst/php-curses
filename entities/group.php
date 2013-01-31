@@ -13,7 +13,7 @@ class Group extends Object {
         parent::__construct();
         $this->drawables= array();
     }
-    public function add($i,$key = null) {
+    public function add(&$i,$key = null) {
         if(!$key)
             $key=count($this->drawables);
         $this->drawables[$key]=$i;
