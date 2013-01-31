@@ -9,29 +9,35 @@ use Entities\RandomSpawner;
 
 class Matrix {
 
+const LOWEST_RATE=7;///<lowest rate of spawn
+const LENGTH=33;///<length of number lines
+
     private $steps;
     private $frame;
 
     public function __construct($steps) {
         $this->steps=$steps;
-        $this->frame = new Frame(100000);
+        $this->frame = new Frame(70000);
     }
     public function start() {
+$nextspawn = 0;
         for($i = 0; $i != $this->steps; $i++) {
             $this->frame->step();
-            if($i%10 == 0)
+            if($i > $nextspawn){
                 $this->spawn();
+$nextspawn = mt_rand($i,$i+Matrix::LOWEST_RATE);
+}
         }
-        $f->close();
+        $this->frame->close();
     }
     public function spawn() {
         $s = new RandomSpawner(MovingDrawable::S,mt_rand(0,79),0,'a');
         $s->setRandomBehavior(RandomSpawner::NUMERIC);
-        $s->setSpawnsRemaining(30);
+        $s->setSpawnsRemaining(Matrix::LENGTH);
         $this->frame->add($s);
     }
 }
 
-$s = new Matrix(100);
+$s = new Matrix(200);
 $s->start();
 ?>

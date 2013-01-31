@@ -8,6 +8,10 @@ class RandomSpawner extends Spawner {
     const UPPERCASE = 2;
     const LETTER = 3;
 
+    public function __construct($direction, $xcord, $ycord, $char, $velo=1, $rate=1,$tospawn=-1) {
+parent::__construct($direction,$xcord,$ycord,$char,$velo,$rate,$tospawn);
+}
+
     protected $behavior;///<random spawn behavior
 
     public function setRandomBehavior($i) {
