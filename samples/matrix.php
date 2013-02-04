@@ -1,7 +1,6 @@
 <?php
 
 include(__DIR__.'/../start.php');
-include(__DIR__.'/logger.php');
 
 use Entities\Frame;
 use Entities\Spawner;
@@ -16,8 +15,8 @@ const VELOCITY_LOW=1;
 const VELOCITY_HIGH=2;
 
 
-const HIGHEST_RATE=5;
-    const LOWEST_RATE=10;///<lowest rate of spawn
+const HIGHEST_RATE=7;
+    const LOWEST_RATE=22;///<lowest rate of spawn
     const LENGTH=32;///<length of number lines
 
     private $steps;
@@ -32,7 +31,7 @@ const HIGHEST_RATE=5;
         for($i = 0; $i != $this->steps; $i++) {
             $this->frame->step();
             if($i > $nextspawn) {
-$GLOBALS['log']->log($this->frame->getSize());
+$GLOBALS['logger']->log($this->frame->getSize());
                 $this->spawn();
                 $nextspawn = mt_rand($i+Matrix::HIGHEST_RATE, $i+Matrix::LOWEST_RATE);
             }
