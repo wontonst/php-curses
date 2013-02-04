@@ -3,7 +3,7 @@ namespace Entities;
 /**
 Higher level of abstraction from a Drawable. Does not need to be something that can be drawn.
 */
-class Object extends StateObject{
+class Object{
     const BAD = 0;
     const GOOD= 1;
 
@@ -12,15 +12,14 @@ protected $offscreen;///<defines behavior of object upon leaving screen
 
 public function __construct()
 {
-parent::__construct();
-        $this->good = StateObject::GOOD;
+        $this->good = Object::GOOD;
     $this->offscreen = Drawable::HIDE_WHILE_OFFSCREEN;
 }
     public function setOffscreenOperation($b) {
         $this->offscreen = $b;
     }
    public function isGood() {
-        return $this->good==StateObject::GOOD;
+        return $this->good==Object::GOOD;
     }
 public function update()
 {

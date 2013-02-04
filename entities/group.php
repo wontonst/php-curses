@@ -32,7 +32,7 @@ class Group extends Object {
             if(!$this->drawables[$i]->isGood()) {
                 unset($this->drawables[$i]);
                 if(empty($this->drawables)) {
-                    $this->good=StateObject::BAD;
+                    $this->good=Object::BAD;
                     return;
                 }
                 $this->drawables = array_values($this->drawables);

@@ -37,7 +37,7 @@ class Drawable extends Object {
         if(($this->data['x'] > -1 && $this->data['x'] < $GLOBALS['x'] && $this->data['y'] > -1 && $this->data['y'] < $GLOBALS['y'] ) || $this->offscreen==Drawable::DRAW_WHILE_OFFSCREEN) {
             ncurses_move($this->data['y'], $this->data['x']);
             ncurses_addch(ord($this->data['c']));
-        } else if($this->offscreen==Drawable::REMOVE_UPON_OFFSCREEN)$this->good=StateObject::BAD;
+        } else if($this->offscreen==Drawable::REMOVE_UPON_OFFSCREEN)$this->good=Object::BAD;
     }
 }
 

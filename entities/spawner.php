@@ -56,7 +56,7 @@ class Spawner extends Group {
             $this->spawnOne();
             $this->data['spawnsremaining']--;
         } else if (empty($this->drawables)) {
-            $this->$good=StateObject::BAD;
+            $this->$good=Object::BAD;
         }
     }
 

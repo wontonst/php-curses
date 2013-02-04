@@ -48,7 +48,6 @@ $s->setOffscreenOperation(Drawable::REMOVE_UPON_OFFSCREEN);
         $this->frame->add($s);
     }
 }
-$GLOBALS['log']=new Logger('log');
 $s = new Matrix(2000);
 $s->start();
 ?>
