@@ -15,7 +15,7 @@ class Drawable extends Object {
     <li>c => character to be drawn</li>
     */
     protected $data;
-    
+
     public function __construct($x,$y,$char) {
         parent::__construct();
         $this->data['x']=$x;

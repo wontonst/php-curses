@@ -61,9 +61,9 @@ class Spawner extends Group {
     }
 
     public function spawnOne() {
-$draw = new MovingDrawable($this->data['x'], $this->data['y'], $this->data['char'], $this->direction, $this->velocity);
-$draw->setOffscreenBehavior($this->offscreen);
-$this->add($draw);
+        $draw = new MovingDrawable($this->data['x'], $this->data['y'], $this->data['char'], $this->direction, $this->velocity);
+        $draw->setOffscreenBehavior($this->offscreen);
+        $this->add($draw);
     }
 }
 

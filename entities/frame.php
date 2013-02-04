@@ -34,10 +34,9 @@ class Frame {
     public function add($o) {
         $this->obj[] = $o;
     }
-public function getSize()
-{
-return count($this->obj);
-}
+    public function getSize() {
+        return count($this->obj);
+    }
     public function close() {
         ncurses_end();
     }

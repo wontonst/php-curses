@@ -36,8 +36,8 @@ class RandomSpawner extends Spawner {
         default:
             $char=$this->data['char'];
         }
-$d=new MovingDrawable($this->data['x'], $this->data['y'], $char, $this->direction, $this->velocity);
-$d->setOffscreenOperation($this->offscreen);
+        $d=new MovingDrawable($this->data['x'], $this->data['y'], $char, $this->direction, $this->velocity);
+        $d->setOffscreenOperation($this->offscreen);
         $this->add($d);
     }
 
