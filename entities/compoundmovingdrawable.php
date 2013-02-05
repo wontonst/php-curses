@@ -20,6 +20,7 @@ class CompoundMovingDrawable extends MovingDrawable{
 }
  private function constructShape(&$shape)
  {
+   $GLOBALS['logger']->log('constructing');
    $x = $this->data['x'];
    $y = $this->data['y'];
    foreach($shape as $row)
@@ -27,12 +28,23 @@ class CompoundMovingDrawable extends MovingDrawable{
        foreach($row as $col)
 	 {
 	   $this->drawables[] = new MovingDrawable($x,$y,$col, $this->data['path'], $this->data['velocity']);
+	   $GLOBALS['logger']->log($x.','.$y);
+	   $x++;
 	 }
-       $y = 0;
-       $x++;
+       $x=$this->data['x'];
+       $y++;
      }
  }
-
+ public function update()
+ {
+   foreach($this->drawables as $k=>&$d){
+     $d->update();
+     if(!$d->isGood())
+       unset($this->drawables[$k]);
+   }
+   if(empty($this->drawables))
+     $this->good = Object::BAD;
+ }
 }
 
 ?>
