@@ -10,5 +10,16 @@ class Shapes{
       $line[] = array('|');
     return $line;
   }
+  /*
+>>-->
+   */
+  public static function ARROW($length=2)
+  {
+    $a = array('>','>');
+    for($i = 0; $i != $length;$i++)
+      $a[]='-';
+    $a[]='>';
+    return $a;
+  }
 }
 ?>
