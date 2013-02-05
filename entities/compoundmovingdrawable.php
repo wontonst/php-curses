@@ -10,7 +10,7 @@ class CompoundMovingDrawable extends MovingDrawable{
 @param $y y-coordinate of the top-left corner of the drawable
 @param $shape NxN array of characters to print
   */
- private function __construct($x,$y,$shape,$path,$velocity){
+ public function __construct($x,$y,$shape,$path,$velocity){
    parent::__construct($x,$y,' ',$path,$velocity);
         if(!is_array($path))$path = array($path);
         $this->data['path'] = $path;
