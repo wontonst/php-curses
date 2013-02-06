@@ -12,7 +12,8 @@ class Object {
 
     public function __construct() {
         $this->good = Object::GOOD;
-        $this->offscreen = Drawable::HIDE_WHILE_OFFSCREEN;
+	//        $this->offscreen = Drawable::HIDE_WHILE_OFFSCREEN;
+	$this->offscreen = Drawable::REMOVE_UPON_OFFSCREEN;
     }
     public function setOffscreenOperation($b) {
         $this->offscreen = $b;
